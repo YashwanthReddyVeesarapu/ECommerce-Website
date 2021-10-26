@@ -1,0 +1,21 @@
+.socialSignIn{
+margin: 1.5rem auto 0;
+}
+
+.row{
+    margin-top: 5px;
+}
+
+.links{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin: 1% auto 0;
+
+    a{
+        margin-left: 2%;
+        margin-right: 2%;
+        color: black;
+        text-decoration: underline
+    }
+}

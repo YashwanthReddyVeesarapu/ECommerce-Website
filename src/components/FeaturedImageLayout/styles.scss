@@ -1,0 +1,26 @@
+.horizontalScrool{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    justify-content: space-between;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .div{
+        img{
+            padding: 10px;
+            max-height: 200px;
+            animation: all ease-in-out;
+            transition: 0.3s;
+        }
+        img:hover{
+            cursor: pointer;
+            border: 10px solid black;
+        }
+    }
+    
+    
+   
+}

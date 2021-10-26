@@ -1,0 +1,124 @@
+.checkout {
+    margin: 2rem auto;
+  
+    h1 {
+      display: block;
+      width: 100%;
+    }
+  
+    h1, p {
+      text-align: center;
+      padding: 10px;
+      a {
+        font-size: 30px;
+        font-weight: 600;
+        color: #B22222;
+        
+      }
+    }
+  
+
+   
+  
+    .checkoutHeader {
+      border-bottom: 1px solid black;
+    }
+  
+    .cart {
+      max-width: 100.0rem;
+      margin: 0 auto;
+  
+      table {
+        width: 100%;
+      }
+    }
+  
+    .checkoutHeader,
+    .cart {
+      width: 100%;
+      text-align: left;
+  
+      th,
+      td {
+        width: 18.6%;
+      }
+    }
+  
+    .cartItem {
+      td img {
+        display: block;
+        width: 100%;
+      }
+    }
+  
+    .cartBtns {
+      display: block;
+      width: 100%;
+    }
+  
+    .cartBtn {
+      cursor: pointer;
+    }
+    .remove {
+      display: block;
+      width: 100%;
+      padding: 1.0rem;
+      background-color: black;
+      color: white;
+      font-size: 10px;
+    }
+    .qtyBtn {
+      cursor: pointer;
+      color: white;
+      background-color:  #00001171;
+      transition: all .2s ease-in-out;
+    }
+    .qtyBtn:hover{
+      background-color: black;
+    }
+  
+  }
+  .btns{
+    td:hover{
+      transform: translateY(-2px);
+      transition: 0.5s;
+    }
+    a{
+    font-weight: 200;
+    
+    }
+    Button{
+      border-radius: 0;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 980px) {
+  
+    .checkoutHeader {
+      display: none;
+    }
+  
+    .cartItem {
+      border: 1px solid black;
+    }
+  
+    .checkout .cart td {
+      display: block;
+      width: 100%;
+    }
+    .btns{
+      display: inline-flex;
+      width: 100%;
+    }
+    .btn{
+      max-width: 100%;
+      margin: 0;
+      display: block;
+      .a{
+        max-width: 10%;
+      }
+    }
+  
+    
+  }

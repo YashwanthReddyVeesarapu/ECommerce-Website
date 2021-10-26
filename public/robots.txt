@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
+Sitemap: https://rediva-lifestyle.web.app/sitemap.xml
 User-agent: *
 Disallow:

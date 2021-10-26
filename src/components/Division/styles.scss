@@ -1,0 +1,22 @@
+.cust{
+    display: flex;
+    height: 200;
+    .cu {
+        display: inline-block;
+        width: 100%;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+        padding: 10px;
+    }
+    .slide {
+    opacity: 0;
+    transition-duration: 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transition-duration:  1s;
+    transform: scale(1.08);
+}
+}

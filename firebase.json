@@ -1,0 +1,69 @@
+{
+  "functions": {
+    "predeploy": [
+      "npm --prefix \"$RESOURCE_DIR\" run lint"
+    ],
+    "source": "functions"
+  },
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "**/*",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "build, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "static/**",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "build, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "build, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "sw.js",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "build, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "page-data/**",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "build, max-age=0, must-revalidate"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
