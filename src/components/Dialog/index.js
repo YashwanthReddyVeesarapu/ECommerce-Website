@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 const SimpleDialog = props => {
 
     const classes = useStyles();
-    const { onClose, selectedValue, open, text } = props;
+    const { onClose, selectedValue, open, text, title } = props;
 
     const handleClose = () => {
         onClose(selectedValue);
@@ -17,7 +17,7 @@ const SimpleDialog = props => {
 
     return (
         <Dialog maxWidth='xs' onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-            <DialogTitle style={{ fontSize: 20 }} >ALERT | RED Lifestyle</DialogTitle>
+            <DialogTitle style={{ fontSize: 20 }} >{title ? title : ' ALERT | REDIVA'}</DialogTitle>
             <DialogContent>
                 <DialogContentText style={{ fontSize: 15 }} id="simple-dialog-title"><span dangerouslySetInnerHTML={{ __html: text }} /></DialogContentText>
             </DialogContent>

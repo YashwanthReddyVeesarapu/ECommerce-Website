@@ -11,6 +11,7 @@ export const checkUserIsAdmin = currentUser => {
 export const apiInstance = axios.create({
   baseURL: 'https://asia-south1-rediva-lifestyle.cloudfunctions.net/app'
   //baseURL: 'http://localhost:5000/rediva-lifestyle/asia-south1/app'
+  //baseURL: 'http://localhost:5001'
 });
 
 export const apiInstance2 = axios.create({

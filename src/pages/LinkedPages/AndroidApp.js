@@ -21,7 +21,7 @@ const AndroidApp = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', background: 'black', color: 'white', padding: '10px' }}>
                 Direct Link
-                <Button color='secondary' variant='contained' href={downloadLink} download="Rediva" onClick={() => setLoading(true)} >
+                <Button color='primary' variant='contained' href={downloadLink} download="Rediva" onClick={() => setLoading(true)} >
                     {loading ? <CircularProgress size={20} color='inherit' /> :
                         <CloudDownloadRounded fontSize='large' color='inherit' />
                     }

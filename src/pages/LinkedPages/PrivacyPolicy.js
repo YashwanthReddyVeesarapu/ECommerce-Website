@@ -3,7 +3,7 @@ import React from 'react'
 const PrivacyPolicy = () => {
     return (
         <div className="c" >
-            <h1>Privacy Policy for RED</h1>
+            <h1>Privacy Policy for REDIVA</h1>
 
             <p>At REDIVA, accessible from https://rediva-lifestyle.web.app/, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by REDIVA and how we use it.</p>
 

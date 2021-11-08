@@ -11,6 +11,8 @@ import { MenuItem, Select, FormControl, CircularProgress, InputLabel } from '@ma
 import SimpleDialog from '../Dialog';
 import { HelpOutline } from '@material-ui/icons';
 
+import { sizeCharts } from '../../pages/Admin/Additionals';
+
 
 const mapState = state => ({
   product: state.productsData.product
@@ -21,6 +23,7 @@ const ProductCard = ({ }) => {
   const history = useHistory();
   const [size, setSize] = useState('');
   const [open, setOpen] = useState(false);
+  const [sizeChartOpen, setSizeChartOpen] = useState(false);
   const { productID } = useParams();
   const { product } = useSelector(mapState);
 
@@ -45,7 +48,8 @@ const ProductCard = ({ }) => {
     productSize,
     brand,
     productColor,
-    adaptiveThumbnails
+    adaptiveThumbnails,
+    productType
   } = product;
 
   const [colour, setColour] = useState('');
@@ -76,7 +80,7 @@ const ProductCard = ({ }) => {
   const handleAddToCart = (product) => {
     if (!product) return;
 
-    if (size === '' || colour === '' || colour === 'z')
+    if (size === '' || colour === '')
       handleClickOpen();
     else {
       dispatch(
@@ -91,6 +95,12 @@ const ProductCard = ({ }) => {
   const configAddToCartBtn = {
     type: 'button'
   }
+
+  var sizeChartURL = '';
+  Object.values(sizeCharts.womenApparel).filter((f) => {
+    if (f.label === productType)
+      sizeChartURL = f.Url;
+  })
 
   const url = window.location.href;
 
@@ -113,6 +123,7 @@ const ProductCard = ({ }) => {
           <meta property="product:retailer_item_id" content="Rediva#" />
           <meta property="product:item_group_id" content={brand} />
         </Helmet>
+        <SimpleDialog open={sizeChartOpen} onClose={() => setSizeChartOpen(false)} title={"SIZE CHART | REDIVA "} text={`<img width='100%' src=${sizeChartURL} />`} />
 
 
         <div className="hero">
@@ -165,7 +176,7 @@ const ProductCard = ({ }) => {
             </div>
 
             <div className='sizeSelect' >
-              <HelpOutline onClick={() => setColour('z')} style={{ left: '-30%', top: '30%', position: 'absolute', color: 'gray' }} fontSize="large" />
+              <HelpOutline onClick={() => setSizeChartOpen(true)} style={{ left: '-30%', top: '30%', position: 'absolute', color: 'gray' }} fontSize="large" />
               <FormControl style={{ minWidth: 80 }} variant="outlined" >
                 <InputLabel style={{ fontSize: 13, padding: 10 }} > Size </InputLabel>
                 <Select style={{ fontSize: 10 }} required value={size} onChange={(e) => setSize(e.target.value)} >

@@ -26,3 +26,10 @@ export const setOrderDetails = order => ({
   type: ordersTypes.SET_ORDER_DETAILS,
   payload: order
 });
+
+export const setOrderStatus = (orderID, value, order) => ({
+  type: ordersTypes.SET_ORDER_STATUS,
+  payload1: orderID,
+  payload2: value,
+  order: order
+});

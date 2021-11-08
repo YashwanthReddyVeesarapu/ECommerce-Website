@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid, ButtonBase, Paper, Typography, MenuItem, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { CircularProgress } from '@material-ui/core';
-import { setOrderDetails } from './../../redux/Orders/orders.actions';
+import { setOrderDetails, setOrderStatus } from './../../redux/Orders/orders.actions';
 
 import moment from 'moment';
+import { useLocation } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    padding: 40,
+    padding: '10%',
     paddingTop: 10,
     paddingBottom: 10,
     "@media (max-width: 980px)": {
@@ -19,23 +20,26 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   paper: {
-    padding: theme.spacing(4),
-    margin: 'auto',
+    padding: theme.spacing(1),
     marginBottom: '2vh'
   },
   image: {
-    width: 'auto',
+    width: 300,
     height: 200,
     "@media (max-width: 980px)": {
-      width: 150,
-      height: 150,
+      width: 180,
+      height: 'auto',
     }
   },
   img: {
     margin: 'auto',
     display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
+    height: 200,
+    "@media (max-width: 980px)": {
+      height: 'auto',
+      width: '100%',
+
+    }
   }
 
 
@@ -52,8 +56,14 @@ const OrderDetails = ({ order }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState(order.orderStatus);
+
   const params = new URLSearchParams(window.location.search);
-  const auth = params.get('auth');
+  const auth = params.get("auth");
+  const ID = params.get("ID");
+
+
+  console.log(auth);
+
 
   useEffect(() => {
     return () => {
@@ -72,13 +82,20 @@ const OrderDetails = ({ order }) => {
   const handleChange = (e) => {
     const level = e;
     setStatus(e);
+    dispatch(
+      setOrderStatus(ID, level, order)
+    )
 
   }
+  const abc = 1;
+
+
 
 
 
   return (
     <div className={classes.root}>
+
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
 
@@ -88,18 +105,18 @@ const OrderDetails = ({ order }) => {
                 <Grid item xs container direction="row" wrap="nowrap" spacing={2} key={pos} alignItems="center">
                   <Grid item>
                     <ButtonBase className={classes.image}>
-                      <img className={classes.img} alt="thumbnail" src={item.productThumbnail} />
+                      <img className={classes.img} alt="Product Image" src={item.productThumbnail} />
                     </ButtonBase>
                   </Grid>
                   <Grid item xs align="left" >
                     <Typography gutterBottom variant="h5" >
                       {item.productName}
                     </Typography>
-                    {currentUser[0] === "admin" ?
+                    {(currentUser[0] === "admin" && auth == "admin") ?
                       < Select value={status} onChange={(e) => handleChange(e.target.value)} >
-                        <MenuItem key={0} value="Processing" >Processing</MenuItem>
+                        <MenuItem key={0} value="Processing" >Processed</MenuItem>
                         <MenuItem key={1} value="Dispatched" >Dispatched</MenuItem>
-                        <MenuItem key={2} value="Shipping" >Shipping</MenuItem>
+                        <MenuItem key={2} value="Shipping" >Shipped</MenuItem>
                         <MenuItem key={3} value="Delivered" >Delivered</MenuItem>
                       </Select>
                       :

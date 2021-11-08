@@ -24,6 +24,7 @@ import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import Orders from './pages/Admin/Orders';
+import Additionals from './pages/Admin/Additionals'
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Payu from './pages/Payu';
@@ -208,6 +209,13 @@ const App = () => {
           <WithAdminAuth>
             <AdminLayout>
               <Orders />
+            </AdminLayout>
+          </WithAdminAuth>
+        )} />
+        <Route path="/additionals" render={() => (
+          <WithAdminAuth>
+            <AdminLayout>
+              <Additionals />
             </AdminLayout>
           </WithAdminAuth>
         )} />

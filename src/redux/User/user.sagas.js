@@ -381,7 +381,7 @@ export function* signUpUser({ payload: {
               <td style="overflow-wrap:break-word;word-break:break-word;padding:40px;font-family:'Montserrat',sans-serif;" align="left">
                 
           <div style="color: #828388; line-height: 140%; text-align: left; word-wrap: break-word;">
-            <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-size: 14px; line-height: 19.6px;">&copy; RED,&nbsp; All Rights Reserved </span></p>
+            <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-size: 14px; line-height: 19.6px;">&copy; REDIVA,&nbsp; All Rights Reserved </span></p>
           </div>
         
               </td>

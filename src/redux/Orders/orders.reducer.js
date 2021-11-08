@@ -5,8 +5,8 @@ const INITIAL_STATE = {
   orderDetails: {},
 };
 
-const ordersReducer = (state=INITIAL_STATE, action) => {
-  switch(action.type) {
+const ordersReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
     case ordersTypes.SET_USER_ORDER_HISOTRY:
       return {
         ...state,

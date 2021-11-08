@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getOrderDetailsStart } from './../../redux/Orders/orders.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import OrderDetails from './../../components/OrderDetails';
+import { Helmet } from 'react-helmet';
 
 const mapState = ({ ordersData }) => ({
   orderDetails: ordersData.orderDetails
@@ -31,6 +32,10 @@ const Order = () => {
 
   return (
     <div>
+
+      <Helmet>
+        <title>Rediva | Order:{orderID}</title>
+      </Helmet>
 
       <h3>
         Order ID:

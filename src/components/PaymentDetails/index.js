@@ -61,10 +61,11 @@ const PaymentDetails = () => {
     script.id = 'bolt'
     script.src = 'https://checkout-static.citruspay.com/bolt/run/bolt.min.js'
     document.body.appendChild(script);
-
     window.scrollTo(0, 0);
     ordID();
   }, []);
+
+
 
   const handleClose = (value) => {
     setErrorOpen(false);
@@ -104,11 +105,11 @@ const PaymentDetails = () => {
     }
     // API call to get the Hash value
     apiInstance.post('/payment/payumoney', {
-      mode: 'cors',
       method: 'POST',
       headers: {
+        'Access-Control-Allow-Origin': 'true',
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: data
     }).then(res => {

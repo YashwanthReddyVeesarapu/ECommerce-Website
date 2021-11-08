@@ -38,6 +38,7 @@ const Admin = props => {
   const [productColor, setProductColor] = useState([]);
   const [productThumbnail, setProductThumbnail] = useState([]);
   const [productPrice, setProductPrice] = useState(0);
+  const [productType, setProductType] = useState('');
   const [productDesc, setProductDesc] = useState('');
   const [discount, setDiscount] = useState(0);
   const [stock, setStock] = useState(0);
@@ -87,6 +88,7 @@ const Admin = props => {
     setStock(0);
     setKeywords([]);
     setAdaptiveThumbnails({});
+    setProductType('');
   };
 
   const createKeywords = (name) => {
@@ -266,7 +268,8 @@ const Admin = props => {
         discount,
         stock,
         keywords,
-        adaptiveThumbnails
+        adaptiveThumbnails,
+        productType
       })
     );
     resetForm();
@@ -306,9 +309,7 @@ const Admin = props => {
     if (Array.isArray(data))
       sessionStorage.setItem("noOfProducts", data.length);
     if (scrool > 100) {
-      window.scrollTo(0, 0);
       window.scrollTo(0, scrool);
-
     }
   }, [data])
 
@@ -378,6 +379,13 @@ const Admin = props => {
               type="text"
               value={brand}
               handleChange={e => setProductBrand(e.target.value.toUpperCase())}
+            />
+            <FormInput
+              label="Type"
+              placeholder="WRNHS,WCTHS,WRN34S"
+              type="text"
+              value={productType}
+              handleChange={e => setProductType(e.target.value.toUpperCase())}
             />
 
             <FormInput

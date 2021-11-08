@@ -9,7 +9,7 @@ import moment from 'moment';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: 40,
+    padding: '10%',
     paddingTop: 10,
     paddingBottom: 10,
     "@media (max-width: 980px)": {
@@ -17,16 +17,15 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   paper: {
-    padding: theme.spacing(4),
-    margin: 'auto',
-    marginBottom: '2vh'
+    padding: theme.spacing(1),
+    marginBottom: '1vh'
   },
   image: {
-    width: 'auto',
+    width: 300,
     height: 200,
     "@media (max-width: 980px)": {
-      width: 150,
-      height: 150,
+      width: 180,
+      height: 'auto',
     }
   },
   img: {
@@ -66,7 +65,7 @@ const OrderHistory = ({ orders, currentUser }) => {
                 <Grid item xs container direction="row" wrap="nowrap" spacing={2} key={pos} alignItems="center">
                   <Grid item>
                     <ButtonBase className={classes.image}>
-                      <img onClick={() => history.push(currentUser === 'admin' ? `/order/${documentID}?auth=0` : `/order/${documentID}`)} className={classes.img} alt="thumbnail" src={item.orderItems[0].productThumbnail} />
+                      <img onClick={() => history.push(currentUser === 'admin' ? `/order/${documentID}/?auth=admin&ID=${documentID}` : `/order/${documentID}`)} className={classes.img} alt="thumbnail" src={item.orderItems[0].productThumbnail} />
                     </ButtonBase>
                   </Grid>
                   <Grid item xs align="left" >
