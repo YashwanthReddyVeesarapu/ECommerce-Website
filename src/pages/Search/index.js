@@ -1,5 +1,4 @@
 import React from 'react';
-import Division from '../../components/Division';
 import ProductResults from './../../components/ProductResults';
 
 const Search = ({ cat }) => {

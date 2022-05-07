@@ -30,7 +30,8 @@ const AndroidApp = () => {
             </div>
 
             <LinearScale />
-
+            <a referrerPolicy="no-referrer" href="https://www.amazon.com/dp/B09JL2VSXN/ref=apps_sf_sta" target="_blank"  >Download From Amazon App Store </a>
+            <LinearScale />
             <div style={{ display: 'flex', flexDirection: 'column', background: 'black', color: 'white' }}>
                 <img style={{ padding: '10px' }} src={QR} />
 

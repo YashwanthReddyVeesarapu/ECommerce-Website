@@ -247,7 +247,9 @@ const PaymentDetails = () => {
   };
   if (loading)
     return (
-      <CircularProgress color="inherit" style={{ marginTop: '40vh', marginLeft: '47%', marginBottom: '40vh', alignSelf: 'center' }} />
+      <div className='loading'>
+        <CircularProgress color="inherit" style={{ marginTop: "calc(50vh - 20px)", marginLeft: "calc(50vw - 20px)" }} />
+      </div>
     )
   else
     return (

@@ -93,7 +93,7 @@ const Signup = props => {
     <AuthWrapper {...configAuthWrapper}>
       <div className="formWrap">
         <Helmet>
-          <meta name="description" content="Rediva | Create your account." />
+          {/* <meta name="description" content="Rediva | Create your account." /> */}
           <title>Rediva | Register</title>
         </Helmet>
 

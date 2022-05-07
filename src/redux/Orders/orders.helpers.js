@@ -185,7 +185,7 @@ export const handleSaveOrder = order => {
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
                                                                         style="font-size: 34px; line-height: 47.6px; color: #ffffff;">
-                                                                        RED Lifestyle</span></p>
+                                                                        REDIVA</span></p>
                                                             </div>
 
                                                         </td>

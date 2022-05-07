@@ -105,7 +105,7 @@ const OrderDetails = ({ order }) => {
                 <Grid item xs container direction="row" wrap="nowrap" spacing={2} key={pos} alignItems="center">
                   <Grid item>
                     <ButtonBase className={classes.image}>
-                      <img className={classes.img} alt="Product Image" src={item.productThumbnail} />
+                      <img className={classes.img} alt={item.productName} src={item.productThumbnail} />
                     </ButtonBase>
                   </Grid>
                   <Grid item xs align="left" >

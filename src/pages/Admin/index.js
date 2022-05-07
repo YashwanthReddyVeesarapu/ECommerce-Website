@@ -10,11 +10,12 @@ import LoadMore from './../../components/LoadMore';
 import { CKEditor } from 'ckeditor4-react';
 import './styles.scss';
 import { storage } from './../../firebase/utils'
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress, IconButton } from '@material-ui/core';
 
 import { contentApi } from './../../Utils'
 import { useHistory } from 'react-router';
 import SimpleDialog from '../../components/Dialog';
+import { Close } from '@material-ui/icons';
 
 const mapState = ({ productsData, user }) => ({
   products: productsData.products,
@@ -328,8 +329,14 @@ const Admin = props => {
         </ul>
       </div>
 
-      <Modal {...configModal}>
+      <Modal {...configModal} >
+        <div className="modalClose" >
+          <IconButton  >
+            <Close onClick={() => setHideModal(true)} />
+          </IconButton>
+        </div>
         <div className="addNewProductForm">
+
           <form >
 
             <h2>
@@ -344,6 +351,9 @@ const Admin = props => {
               }, {
                 value: "living",
                 name: "Living"
+              }, {
+                value: "accesories",
+                name: "Accesories"
               }
               ]}
               handleChange={e => setMainCategory(e.target.value)}
@@ -357,13 +367,20 @@ const Admin = props => {
               }, {
                 value: "mens",
                 name: "Mens"
-              }] : [{
+              }] : mainCategory === 'living' ? [{
                 value: "frames",
                 name: "Framed Poster"
               }, {
                 value: "canvas",
                 name: "Canvas"
-              }]}
+              }] : [{
+                value: "phonecase",
+                name: "Phone Case"
+              }, {
+                value: "popgrip",
+                name: "Pop Grip"
+              }]
+              }
               handleChange={e => setProductCategory(e.target.value)}
             />
 
@@ -433,7 +450,7 @@ const Admin = props => {
                 'L',
                 'XL',
                 '2XL',
-              ] : [
+              ] : mainCategory === 'living' ? [
                 '8 x 8in',
                 '8 x 12in',
                 '8.3 x 11.7in (A4)',
@@ -441,7 +458,10 @@ const Admin = props => {
                 '12 x 12in',
                 '15 x 20in',
                 '20 x 30in'
-
+              ] : [
+                'Iphone 13',
+                'Iphone 12',
+                'Iphone 11'
               ]}
 
               handleChange={e => setProductSize(e.target.value)}
@@ -525,7 +545,9 @@ const Admin = props => {
                       return (
                         <tr key={index}>
                           <td>
-                            <img className="thumb" src={productThumbnail} />
+                            <div className='imageContainer' >
+                              <img className="thumb" src={productThumbnail} />
+                            </div>
                           </td>
                           <td>
                             {productName}

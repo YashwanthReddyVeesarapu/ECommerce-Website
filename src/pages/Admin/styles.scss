@@ -1,5 +1,12 @@
 .admin {
     padding: 0 10px;
+
+    .modalClose{
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 3;
+    }
   
     .callToActions {
       display: inline-block;
@@ -37,15 +44,24 @@
         &:nth-child(even) {
           background-color: #d3d3d3;
         }
+        .imageContainer{
+          width: 200px;
+          height: 200px;
   
         .thumb {
-          width: 15.0rem;
-          margin: 0 auto;
+          height: 100%;
+          width: 100%;
+ 
+          object-fit: cover;
+
         }
+      }
   
       }
     }
   }
+
+
   @media only screen and (max-width: 980px) {
     .manageProducts {
       table {

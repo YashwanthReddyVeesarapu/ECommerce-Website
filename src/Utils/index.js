@@ -15,8 +15,9 @@ export const apiInstance = axios.create({
 });
 
 export const apiInstance2 = axios.create({
-  baseURL: 'https://asia-south1-rediva-lifestyle.cloudfunctions.net/sendMail'
+  // baseURL: 'https://asia-south1-rediva-lifestyle.cloudfunctions.net/sendMail'
   // baseURL: 'http://localhost:5000/rediva-lifestyle/asia-south1/sendMail'
+  baseURL: "http://127.0.0.1:8000/sendemail"
 });
 
 export const contentApi = axios.create({

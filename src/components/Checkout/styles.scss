@@ -45,9 +45,16 @@
     }
   
     .cartItem {
+      .thumb{
+      min-height: 200px;
+      }
       td img {
+        object-fit: cover;
         display: block;
         width: 100%;
+        min-height: 200px;
+        height: 100%;
+        
       }
     }
   
@@ -101,6 +108,12 @@
   
     .cartItem {
       border: 1px solid black;
+      .thumb{
+        height: 200px;
+      }
+      td img{
+        height: 200px;
+      }
     }
   
     .checkout .cart td {

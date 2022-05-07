@@ -33,7 +33,7 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
         userRoles,
         ...additionalData
       });
-    } catch(err) {
+    } catch (err) {
       // console.log(err);
     }
   }

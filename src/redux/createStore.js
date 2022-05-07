@@ -7,15 +7,15 @@ import { persistStore } from 'redux-persist';
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
 
-const PRODUCTION = window.location.hostname === 'localhost';
+const DEVELOPMENT = window.location.hostname === 'localhost';
 
 const sagaMiddleware = createSagaMiddle();
 
-var middlewares = [thunk, sagaMiddleware];
-if (PRODUCTION)
+export var middlewares = [thunk, sagaMiddleware];
+if (DEVELOPMENT)
   middlewares = [thunk, sagaMiddleware, logger];
 
-export var middlewares;
+
 
 export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 sagaMiddleware.run(rootSaga);

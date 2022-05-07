@@ -9,9 +9,6 @@ const Directory = props => {
   return (
 
     <div className="directory">
-      <Helmet>
-        <meta name="description" content="Rediva creates tshirts and many more, Rediva for womens fashion , Red Lifestyle for mens fashion" />
-      </Helmet>
       <div className="wrap">
         <div
           className="item"

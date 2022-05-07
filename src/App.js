@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
 
@@ -41,7 +41,8 @@ import Aedit from './pages/Aedit';
 import Prepayment from './pages/Prepayment';
 import PrivacyPolicy from './pages/LinkedPages/PrivacyPolicy';
 import AndroidApp from './pages/LinkedPages/AndroidApp';
-
+import NotFound from './pages/LinkedPages/NotFound';
+import { getCartData } from './redux/Cart/cart.actions';
 
 //import Flow from './pages/Payment';
 
@@ -49,7 +50,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(checkUserSession());
+    dispatch(checkUserSession())
   }, [dispatch]);
 
   return (
@@ -65,6 +66,9 @@ const App = () => {
         <Route exact path="/" render={() => (
           <Redirect to="/apparel/rediva" />
         )} />
+
+
+
         <Route exact path="/home" render={() => (
           <HomepageLayout>
             <CustomPage />
@@ -103,6 +107,7 @@ const App = () => {
 
         <Route path="/apparel/:filterStore?/:filterType?" render={() => (
           <MainLayout>
+            {/* <Banner /> */}
             <Search cat='apparel' />
           </MainLayout>
         )} />
@@ -226,6 +231,11 @@ const App = () => {
             </AdminLayout>
           </WithAdminAuth>
         )} />
+
+        <Route path="*" render={() => (
+          <NotFound />
+        )}
+        />
       </Switch>
     </div>
   );

@@ -21,18 +21,17 @@ export const clearCart = () => ({
   type: cartTypes.CLEAR_CART
 });
 
-export const handleSize = (s, product) => ({
+export const handleSize = (size, product) => ({
   type: cartTypes.SELECT_SIZE,
-  payload1: s,
+  payload1: size,
   payload2: product,
 
 });
 
-export const handleColour = (c, product) => ({
+export const handleColour = (color, product) => ({
   type: cartTypes.SELECT_COLOUR,
-  payload1: c,
+  payload1: color,
   payload2: product,
-
 });
 
 

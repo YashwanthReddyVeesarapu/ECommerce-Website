@@ -8,6 +8,5 @@ export default function* rootSaga() {
     yield all([
         call(userSagas),
         call(productsSagas),
-        call(ordersSagas),
-    ])
+        call(ordersSagas)])
 }

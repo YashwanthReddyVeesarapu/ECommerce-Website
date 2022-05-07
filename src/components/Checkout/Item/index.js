@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeCartItem, addProduct, reduceCartItem, handleSize } from './../../../redux/Cart/cart.actions';
 import { Select, MenuItem, InputLabel } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { Skeleton } from '@material-ui/lab';
 
 const Item = (product) => {
   const dispatch = useDispatch();
-  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgLoaded, setImgsLoaded] = useState(false);
   const {
     productName,
     productThumbnail,
@@ -56,10 +57,34 @@ const Item = (product) => {
     );
   }
 
+  useEffect(() => {
+    const loadImage = productThumbnail => {
+      return new Promise((resolve, reject) => {
+        const loadImg = new Image()
+        loadImg.src = productThumbnail
+
+        loadImg.onload = () =>
+          setTimeout(() => {
+            resolve(productThumbnail)
+          })
+
+        loadImg.onerror = err => reject(err)
+      })
+    }
+    (loadImage(productThumbnail))
+      .then(() => setImgsLoaded(true))
+      .catch(err => console.log("err", err))
+  }, [])
+
+
+
 
 
   if (Object.entries(adaptiveThumbnails.map)[Object.keys(adaptiveThumbnails.map).indexOf(colour)] == null)
     return null;
+
+
+
 
 
 
@@ -70,7 +95,10 @@ const Item = (product) => {
         <tr>
           <td>
             <Link to={`/product/${documentID}`} >
-              <img src={Object.entries(adaptiveThumbnails.map)[Object.keys(adaptiveThumbnails.map).indexOf(colour)][1]} onLoad={() => setImgLoaded(true)} />
+              {imgLoaded ?
+                <img alt="cart item image" src={Object.entries(adaptiveThumbnails.map)[Object.keys(adaptiveThumbnails.map).indexOf(colour)][1]} onLoad={() => setImgsLoaded(true)} />
+                : <Skeleton className='thumb' variant='rect' />
+              }
             </Link>
           </td>
           <td>

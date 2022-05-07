@@ -92,7 +92,7 @@ const SignIn = props => {
         <SimpleDialog open={openAlert} text={`Login/Register to Proceed to ${path && path.replace('/', '').toUpperCase()}`} onClose={() => setOpenAlert(false)} />
         <SimpleDialog open={openErr} text={str} onClose={() => setOpenErr(false)} />
         <Helmet>
-          <meta name="description" content="Rediva | Login to your registered account to order our products and access your account dashboard." />
+          {/* <meta name="description" content="Rediva | Login to your registered account to order our products and access your account dashboard." /> */}
           <title>Rediva | Login</title>
         </Helmet>
         <form onSubmit={handleSubmit}>

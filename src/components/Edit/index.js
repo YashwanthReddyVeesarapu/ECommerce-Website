@@ -244,7 +244,7 @@ const Edit = () => {
                 Images:
                 {ethumbnails.map((src, i) => (
                     <div key={i} >
-                        <img width={100} src={src} />
+                        <img width={100} src={src} alt={productName} />
                         <input value={src} />
 
                         <input placeholder={adaptiveThumbnails && Object.values(adaptiveThumbnails.map).indexOf(src) !== -1 ?

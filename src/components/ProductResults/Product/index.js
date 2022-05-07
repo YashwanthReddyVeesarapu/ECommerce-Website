@@ -5,20 +5,24 @@ import { useDispatch } from 'react-redux';
 import { addProduct } from './../../../redux/Cart/cart.actions';
 import { Skeleton } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
+import click from './../../../assets/click.wav';
 
 const useStyles = makeStyles((theme) => ({
   thumb: {
     display: 'flex',
-    minHeight: '230px',
+    minHeight: '200px',
     width: '100%',
     height: 'auto',
     justifyContent: 'center',
     alignItems: 'center',
 
     "@media (max-width: 980px)": {
-      height: 'auto',
+      maxHeight: '40vh'
+    },
+    "@media (max-width: 580px)": {
       minHeight: 230,
-      maxHeight: 300,
+      height: 'auto',
+
     }
   },
   img: {
@@ -27,12 +31,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     height: 'auto',
     width: '100%',
+    maxHeight: '220px',
+    objectFit: 'cover',
 
     "@media (max-width: 980px)": {
-      height: '100%',
-      maxHeight: 300,
-      maxWidth: 400,
-      width: '100%',
+      minHeight: '30vh'
+    },
+    "@media (max-width: 580px)": {
+      maxHeight: '40vh'
 
     }
   }
@@ -41,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 const Product = (product) => {
   const classes = useStyles();
   const [imgsLoaded, setImgsLoaded] = useState(false);
+  const [timeout, setTimer] = useState(false);
   const {
     documentID,
     productThumbnail,
@@ -49,6 +56,8 @@ const Product = (product) => {
     productSize,
     discountedPrice
   } = product;
+
+  var audio = new Audio(click);
 
 
   useEffect(() => {
@@ -93,14 +102,23 @@ const Product = (product) => {
 
 
   function redirect() {
+
+    audio.play();
     sessionStorage.setItem('scrool', window.scrollY)
     history.push(`/product/${documentID}`)
+
   }
+
+
+
+  setTimeout(() => {
+    setTimer(true)
+  }, 100);
 
 
   return (
 
-    <div className="product" onClick={redirect} >
+    <div className={timeout ? "product-next" : "product"} onClick={redirect} >
       <div className={classes.thumb}>
         {imgsLoaded ? (
           <img className={classes.img} src={productThumbnail} alt={productName} onLoad={() => setImgsLoaded(true)} />

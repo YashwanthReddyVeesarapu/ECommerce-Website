@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 const SimpleDialog = props => {
 
     const classes = useStyles();
-    const { onClose, selectedValue, open, text, title } = props;
+    const { onClose, selectedValue, open, text, title, closeText } = props;
 
     const handleClose = () => {
         onClose(selectedValue);
@@ -22,7 +22,7 @@ const SimpleDialog = props => {
                 <DialogContentText style={{ fontSize: 15 }} id="simple-dialog-title"><span dangerouslySetInnerHTML={{ __html: text }} /></DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} >OK</Button>
+                <Button onClick={handleClose} > {closeText ? closeText : 'OK'}</Button>
             </DialogActions>
 
         </Dialog>

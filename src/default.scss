@@ -9,7 +9,6 @@ html {
     margin: 0;
     height: 100%;
     -webkit-tap-highlight-color: transparent;
-    
   }
   
   html,
@@ -20,6 +19,8 @@ html {
     height: 100%;
     min-width: 354px;
   }
+
+
   
   *, ::before, ::after {
     -webkit-box-sizing: border-box;
@@ -76,11 +77,21 @@ html {
   
   .main {
     width: 100%;
-    min-height: 69vh;
+    min-height: 90vh;
     height: calc(100% - 10rem);
     max-width: 1450px;
     padding: 0 30px;
     margin: 0 auto;
+  }
+
+  .loading{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.349);
   }
   
   .controlPanel {

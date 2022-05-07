@@ -186,7 +186,8 @@ const ProductResults = ({ cat }) => {
 
               : <h6> That's ALL</h6>}
           </div>
-          : <CircularProgress color="inherit" style={{ marginLeft: "47%", marginTop: "35vh", marginBottom: "35vh", alignSelf: "center" }} />
+
+          : <div className='loading'> <CircularProgress color="inherit" style={{ marginTop: "calc(50vh - 20px)", marginLeft: "calc(50vw - 20px)" }} /></div>
       }
 
 

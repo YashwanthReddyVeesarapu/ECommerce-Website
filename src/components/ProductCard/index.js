@@ -123,7 +123,7 @@ const ProductCard = ({ }) => {
           <meta property="product:retailer_item_id" content="Rediva#" />
           <meta property="product:item_group_id" content={brand} />
         </Helmet>
-        <SimpleDialog open={sizeChartOpen} onClose={() => setSizeChartOpen(false)} title={"SIZE CHART | REDIVA "} text={`<img width='100%' src=${sizeChartURL} />`} />
+        <SimpleDialog open={sizeChartOpen} onClose={() => setSizeChartOpen(false)} title={"SIZE CHART | REDIVA "} closeText={'Close'} text={`<img width='100%' src=${sizeChartURL} />`} />
 
 
         <div className="hero">
@@ -169,6 +169,14 @@ const ProductCard = ({ }) => {
                 if (a === 'coffee brown')
                   return (
                     <div className={colour === a ? "colourChildActive" : "colourChild"} key={i} style={{ backgroundColor: '#914A37' }} onClick={() => setColour('coffee brown')} />
+                  )
+                if (a === 'lavender')
+                  return (
+                    <div className={colour === a ? "colourChildActive" : "colourChild"} key={i} style={{ backgroundColor: '#E6E6FA' }} onClick={() => setColour('lavender')} />
+                  )
+                if (a === 'light baby pink')
+                  return (
+                    <div className={colour === a ? "colourChildActive" : "colourChild"} key={i} style={{ backgroundColor: '#f4C2C2' }} onClick={() => setColour('light baby pink')} />
                   )
               })
               }
