@@ -25,22 +25,15 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 0
   },
   image: {
-    width: 200,
-    height: 200,
-    "@media (max-width: 980px)": {
-      width: 150,
-      height: 150,
-    }
+    width: 150,
+    height: 150,
+    margin: "5px 0"
+
   },
   img: {
-    margin: 'auto',
-    display: 'block',
+    objectFit: 'cover',
     height: 150,
-    "@media (max-width: 980px)": {
-      height: 'auto',
-      width: '100%',
-
-    }
+    width: 150,
   },
   buttons: {
     marginRight: 0,

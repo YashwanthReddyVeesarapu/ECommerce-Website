@@ -57,12 +57,13 @@ const PaymentDetails = () => {
   }
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.id = 'bolt'
-    script.src = 'https://checkout-static.citruspay.com/bolt/run/bolt.min.js'
-    document.body.appendChild(script);
+    // const script = document.createElement('script');
+    // script.id = 'bolt'
+    // script.src = 'https://checkout-static.citruspay.com/bolt/run/bolt.min.js'
+    // document.body.appendChild(script);
     window.scrollTo(0, 0);
     ordID();
+    window.ping_to_server()
   }, []);
 
 
@@ -105,17 +106,18 @@ const PaymentDetails = () => {
     }
     // API call to get the Hash value
     apiInstance.post('/payment/payumoney', {
-      method: 'POST',
-      headers: {
-        'Access-Control-Allow-Origin': 'true',
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: data
+      // method: 'POST',
+      // headers: {
+      //   'Access-Control-Allow-Origin': 'true',
+      //   'Accept': 'application/json',
+      //   'Content-Type': 'application/json',
+      // },
+      ...data
     }).then(res => {
       const data = res.data;
       pd.hash = data.hash;
       pd.key = data.key;
+      console.log(pd)
 
       redirectToPayU(pd);
     })
@@ -143,16 +145,17 @@ const PaymentDetails = () => {
     window.scroll(0, 0);
     window.bolt.launch(pd, {
       responseHandler: function (BOLT) {
-        apiInstance.post('/payment/payumoney/response', {
-          method: 'POST',
-          headers: {
-            'Access-Control-Allow-Origin': 'true',
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: BOLT.response
-        })
+        apiInstance.post('/payment/payumoney/response',
+          // method: 'POST',
+          // headers: {
+          //   'Access-Control-Allow-Origin': 'true',
+          //   'Accept': 'application/json',
+          //   'Content-Type': 'application/json'
+          // },
+          BOLT.response
+        )
           .then(res => {
+            console.log(res)
             //setPaymentResponse(res)
             //console.log(res.data);
             if (res.data !== "err") {

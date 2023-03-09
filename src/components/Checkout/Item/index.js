@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { removeCartItem, addProduct, reduceCartItem, handleSize } from './../../../redux/Cart/cart.actions';
-import { Select, MenuItem, InputLabel } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import { Skeleton } from '@material-ui/lab';
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  removeCartItem,
+  addProduct,
+  reduceCartItem,
+  handleSize,
+} from "./../../../redux/Cart/cart.actions";
+import { Select, MenuItem, InputLabel } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { Skeleton } from "@material-ui/lab";
 
 const Item = (product) => {
   const dispatch = useDispatch();
@@ -19,128 +24,120 @@ const Item = (product) => {
     colour,
     documentID,
     variantID,
-    adaptiveThumbnails
+    adaptiveThumbnails,
   } = product;
 
-  const [rsize, setSize] = useState(size ? size : '');
+  const [rsize, setSize] = useState(size ? size : "");
 
   const handleRemoveCartItem = (variantID) => {
     dispatch(
       removeCartItem({
-        variantID
+        variantID,
       })
     );
-  }
+  };
 
   const handleAddProduct = (product) => {
-    dispatch(
-      addProduct(product, size, colour)
-    )
-  }
+    dispatch(addProduct(product, size, colour));
+  };
 
   const handleReduceItem = (product) => {
-    dispatch(
-      reduceCartItem(product)
-    );
-  }
+    dispatch(reduceCartItem(product));
+  };
 
   const handleSizes = (e) => {
     const s = e.target.value;
     setSize(s);
     passSize(s, product);
-  }
-
+  };
 
   const passSize = (s, product) => {
-    dispatch(
-      handleSize(s, product)
-    );
-  }
+    dispatch(handleSize(s, product));
+  };
 
   useEffect(() => {
-    const loadImage = productThumbnail => {
+    const loadImage = (productThumbnail) => {
       return new Promise((resolve, reject) => {
-        const loadImg = new Image()
-        loadImg.src = productThumbnail
+        const loadImg = new Image();
+        loadImg.src = productThumbnail;
 
         loadImg.onload = () =>
           setTimeout(() => {
-            resolve(productThumbnail)
-          })
+            resolve(productThumbnail);
+          });
 
-        loadImg.onerror = err => reject(err)
-      })
-    }
-    (loadImage(productThumbnail))
+        loadImg.onerror = (err) => reject(err);
+      });
+    };
+    loadImage(productThumbnail)
       .then(() => setImgsLoaded(true))
-      .catch(err => console.log("err", err))
-  }, [])
+      .catch((err) => console.log("err", err));
+  }, []);
 
-
-
-
-
-  if (Object.entries(adaptiveThumbnails.map)[Object.keys(adaptiveThumbnails.map).indexOf(colour)] == null)
+  if (
+    Object.entries(adaptiveThumbnails.map)[
+      Object.keys(adaptiveThumbnails.map).indexOf(colour)
+    ] == null
+  )
     return null;
-
-
-
-
-
-
 
   return (
     <table className="cartItem" border="0" cellSpacing="0" cellPadding="10">
       <tbody>
         <tr>
           <td>
-            <Link to={`/product/${documentID}`} >
-              {imgLoaded ?
-                <img alt="cart item image" src={Object.entries(adaptiveThumbnails.map)[Object.keys(adaptiveThumbnails.map).indexOf(colour)][1]} onLoad={() => setImgsLoaded(true)} />
-                : <Skeleton className='thumb' variant='rect' />
-              }
+            <Link to={`/product/${documentID}`}>
+              {imgLoaded ? (
+                <img
+                  alt="cart item image"
+                  src={
+                    Object.entries(adaptiveThumbnails.map)[
+                      Object.keys(adaptiveThumbnails.map).indexOf(colour)
+                    ][1]
+                  }
+                  onLoad={() => setImgsLoaded(true)}
+                />
+              ) : (
+                <Skeleton className="thumb" variant="rect" />
+              )}
             </Link>
           </td>
+          <td>{productName}</td>
           <td>
-            {productName}
-          </td>
-          <td >
             <div>
-              <InputLabel >Size</InputLabel>
+              <InputLabel>Size</InputLabel>
               <Select required value={rsize} onChange={handleSizes}>
-                {productSize.map((name, value) => ({ name: name, value: value })).map((item) => (
-
-                  <MenuItem key={item.value} value={item.name}>
-                    {item.name}
-                  </MenuItem>
-                ))}
+                {productSize
+                  .map((name, value) => ({ name: name, value: value }))
+                  .map((item) => (
+                    <MenuItem key={item.value} value={item.name}>
+                      {item.name}
+                    </MenuItem>
+                  ))}
               </Select>
             </div>
             {colour}
           </td>
           <td>
-            <span className="qtyBtn"
-              onClick={() => handleReduceItem(product)}>
+            <span className="qtyBtn" onClick={() => handleReduceItem(product)}>
               &nbsp;{`-`}&nbsp;
             </span>
-            <span className="qty">
-              &nbsp; {quantity} &nbsp;
-            </span>
-            <span className="qtyBtn"
-              onClick={() => handleAddProduct(product)}>
+            <span className="qty">&nbsp; {quantity} &nbsp;</span>
+            <span className="qtyBtn" onClick={() => handleAddProduct(product)}>
               &nbsp;{`+`}&nbsp;
             </span>
           </td>
 
-          {discountedPrice === 0 ?
-            <td>
-              &#x20b9;{productPrice}
-            </td> :
-            <td>
-              &#x20b9;{discountedPrice}
-            </td>}
+          {discountedPrice === 0 ? (
+            <td>{productPrice}</td>
+          ) : (
+            <td>&#x20b9;{discountedPrice}</td>
+          )}
           <td align="center">
-            <span className="cartBtn remove" onClick={() => handleRemoveCartItem(variantID)}>
+            <span
+              className="cartBtn remove"
+              onClick={() => handleRemoveCartItem(variantID)}
+            >
               Remove
             </span>
           </td>
@@ -148,6 +145,6 @@ const Item = (product) => {
       </tbody>
     </table>
   );
-}
+};
 
 export default Item;

@@ -2,7 +2,7 @@ import { Button, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addSizeChartStart } from '../../../redux/Additionals/additionals.actions';
-import { apiInstance2 } from '../../../Utils';
+import { apiInstance } from '../../../Utils';
 
 import './styles.scss'
 
@@ -46,14 +46,9 @@ const Additionals = () => {
     useEffect(() => {
 
         const checkServer = () => {
-            apiInstance2.post('', {
-                toMail: "v.yashwanthreddy2@gmail.com",
-                subject: "sub",
-                html: "html"
-
-            }).then(res => {
+            apiInstance.get('/ping').then(res => {
                 console.log(res)
-                if (res.status === 200) {
+                if (res.data === 'success') {
                     setServerStatus(true)
                 }
                 else {

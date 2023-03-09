@@ -11,14 +11,13 @@ const about = () => {
             </h1>
             <h3>Web Developer</h3>
             <ul><h4>Project Info</h4>
-                <li>Developed this project as Part of my Special Project 2.
-                    <br />
-                    Now this project is helping my bussiness.
+                <li>Ecommerce Website <br />
+                    Developed this project as Part of my Special Project 2.
                 </li>
             </ul>
             <ul><h4>About</h4>
-                <li>IFCAI TECH SCHOOL</li>
-                <li>BTech in Computer Science</li>
+                <li>IFCAI Foundation for Higher Education, Hyderabad</li>
+                <li>B. Tech in Computer Science</li>
             </ul>
 
 

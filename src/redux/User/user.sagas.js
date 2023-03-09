@@ -3,7 +3,7 @@ import { auth, handleUserProfile, getCurrentUser, GoogleProvider } from './../..
 import userTypes from './user.types';
 import { signInSuccess, signOutUserSuccess, resetPasswordSuccess, userError } from './user.actions';
 import { handleResetPasswordAPI } from './user.helpers';
-import { apiInstance2 } from './../../Utils';
+import { apiInstance } from './../../Utils';
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
@@ -90,9 +90,8 @@ export function* signUpUser({ payload: {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     const additionalData = { displayName, phone };
     yield getSnapshotFromUserAuth(user, additionalData);
-    apiInstance2.post('', {
+    apiInstance.post('/sendemail', {
       subject: 'Rediva | Registration Success',
-      message: `Hey ${displayName} Account created Successfully`,
       toMail: email,
       html: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

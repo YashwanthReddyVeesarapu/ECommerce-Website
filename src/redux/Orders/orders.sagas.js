@@ -8,7 +8,6 @@ import { auth } from './../../firebase/utils';
 import { clearCart } from './../Cart/cart.actions';
 import { setUserOrderHistory, setOrderDetails } from './orders.actions';
 
-import { apiInstance2 } from '../../Utils';
 
 export function* getUserOrderHistory({ payload }) {
   try {

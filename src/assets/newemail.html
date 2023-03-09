@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .bg {
+            background-color: #9b1a1a;
+            padding: 30px;
+        }
+
+        .content {
+            margin: 50px 20px;
+            min-width: 300px;
+            background-color: white;
+
+        }
+
+        .top {
+            padding: 20px 10px;
+        }
+
+        .address {
+            padding: 20px 20px;
+            background-color: lightgray;
+        }
+
+        .address h2,
+        p {
+
+            margin-bottom: 5px;
+        }
+
+        .section {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+        .purshase {
+            padding: 20px;
+            border-bottom: 1px solid gray;
+        }
+
+        .purchase-items {
+            padding: 20px;
+
+            border-bottom: 1px solid gray;
+        }
+
+        .bottom {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .bottom p a {
+            font-size: .8em;
+        }
+
+        @media screen and (max-width: 575px) {
+            .bg {
+                padding: 20px 10px;
+            }
+
+
+            .content {
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: .9em;
+            }
+
+            h3 {
+                font-size: .8em;
+            }
+
+            p {
+                font-size: .7em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="content">
+            <div class="top">
+                <h1>
+                    REDIVA
+                </h1>
+                <h3>
+                    Order ${payload2}
+                </h3>
+            </div>
+            <div class="address">
+                <h2>
+                    Shipping Address
+                </h2>
+                <p>${name}
+                </p>
+                <p>${phone}
+                </p>
+                <p>
+                    ${address.line1}</p>
+                <p>
+                    ${address.line2 ? address.line2 : ''}</p>
+                <p>
+                    ${address.city},${address.state},${address.postal_code}
+                </p>
+            </div>
+            <div class="section">
+
+
+                <div class="purshase">
+                    <h2>
+                        Purchased Items
+                    </h2>
+                </div>
+                <div class="purchase-items">
+                    <h3>
+                        ${itemNames}
+                    </h3> <br />
+                    <div>
+                        Payment Mode <br />${paymentMethod}
+                    </div>
+                </div>
+                <div class="purchase-items">
+                    <h2>
+                        Grand Total
+                    </h2>
+                    <h2>
+                        ${amount}
+                    </h2>
+                </div>
+            </div>
+            <div class="bottom">
+                RED, All Rights Reserved
+                <p><a href="https://rediva-lifestyle.web.app/" target="_self">rediva-lifestyle.web.app</a></p>
+                <p><a href="https://rediva-lifestyle.web.app/returnpolicy" target="_self">Return Policy</a> | <a
+                        href="https://rediva-lifestyle.web.app/" target="_self">Shop</a> | <a
+                        href="https://rediva-lifestyle.web.app/dashboard" target="_blank" rel="noopener">My Account</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

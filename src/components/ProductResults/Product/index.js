@@ -1,46 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from './../../forms/Button';
 import { useDispatch } from 'react-redux';
-import { addProduct } from './../../../redux/Cart/cart.actions';
 import { Skeleton } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
-import click from './../../../assets/click.wav';
 
 const useStyles = makeStyles((theme) => ({
   thumb: {
     display: 'flex',
-    minHeight: '200px',
+    height: '200px',
     width: '100%',
-    height: 'auto',
     justifyContent: 'center',
     alignItems: 'center',
-
-    "@media (max-width: 980px)": {
-      maxHeight: '40vh'
-    },
-    "@media (max-width: 580px)": {
-      minHeight: 230,
-      height: 'auto',
-
-    }
   },
   img: {
     overflow: 'hidden',
     margin: 'auto',
     display: 'block',
-    height: 'auto',
+    height: '200px',
     width: '100%',
     maxHeight: '220px',
     objectFit: 'cover',
-
-    "@media (max-width: 980px)": {
-      minHeight: '30vh'
-    },
-    "@media (max-width: 580px)": {
-      maxHeight: '40vh'
-
-    }
   }
 }));
 
@@ -57,7 +36,6 @@ const Product = (product) => {
     discountedPrice
   } = product;
 
-  var audio = new Audio(click);
 
 
   useEffect(() => {
@@ -102,13 +80,10 @@ const Product = (product) => {
 
 
   function redirect() {
-
-    audio.play();
     sessionStorage.setItem('scrool', window.scrollY)
     history.push(`/product/${documentID}`)
 
   }
-
 
 
   setTimeout(() => {

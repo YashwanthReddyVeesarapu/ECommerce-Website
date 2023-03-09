@@ -1,5 +1,5 @@
-import { Button, Card, CircularProgress } from '@material-ui/core'
-import { CloudDownloadRounded, LinearScale } from '@material-ui/icons'
+import { Button, CircularProgress } from '@material-ui/core'
+import { CloudDownloadRounded } from '@material-ui/icons'
 import QR from './../../assets/RedivaAndroidAppQR.png'
 import React, { useState, useEffect } from 'react'
 
@@ -17,21 +17,29 @@ const AndroidApp = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', textAlign: 'center', alignContent: 'center', height: '70vh', alignItems: 'center' }} >
-            <div style={{ padding: '2%', border: '2px solid black', color: 'black', borderBottom: 'none' }} >Rediva App for Android</div>
+            <div style={{ background: 'black', color: 'white', padding: '20px', borderRadius: "1em", width: '200px' }}>
 
-            <div style={{ display: 'flex', flexDirection: 'column', background: 'black', color: 'white', padding: '10px' }}>
-                Direct Link
+                <div style={{ display: 'inline-block', color: '#78C257', padding: '10px', borderRadius: '1em', backgroundColor: '#fff', marginBottom: '10px' }} > Android</div>
+                <br />
+
                 <Button color='primary' variant='contained' href={downloadLink} download="Rediva" onClick={() => setLoading(true)} >
-                    {loading ? <CircularProgress size={20} color='inherit' /> :
+                    {loading ? <CircularProgress size={20} color='inherit' /> : (<>
+                        <div style={{ fontSize: '12px' }} >
+                            Download
+                        </div>
                         <CloudDownloadRounded fontSize='large' color='inherit' />
+                    </>)
                     }
                 </Button>
 
             </div>
 
-            <LinearScale />
-            <a referrerPolicy="no-referrer" href="https://www.amazon.com/dp/B09JL2VSXN/ref=apps_sf_sta" target="_blank"  >Download From Amazon App Store </a>
-            <LinearScale />
+            <div style={{ background: 'black', color: 'white', padding: '30px', borderRadius: "1em", width: '250px' }}>
+
+                <a style={{ backgroundColor: '#FF9900', padding: '10px', borderRadius: '1em', color: '#000' }} referrerPolicy="no-referrer" href="https://www.amazon.com/dp/B09JL2VSXN/ref=apps_sf_sta" target="_blank"  >
+                    Amazon App Store
+                </a>
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', background: 'black', color: 'white' }}>
                 <img style={{ padding: '10px' }} src={QR} />
 

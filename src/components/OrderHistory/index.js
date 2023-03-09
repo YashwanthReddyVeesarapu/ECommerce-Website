@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     "@media (max-width: 980px)": {
       width: 180,
-      height: 'auto',
+      height: 200,
+      objectFit: 'cover'
     }
   },
   img: {

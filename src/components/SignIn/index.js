@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { emailSignInStart, googleSignInStart } from './../../redux/User/user.actions';
-import { apiInstance2 } from './../../Utils'
 
 import SimpleDialog from './../Dialog';
 

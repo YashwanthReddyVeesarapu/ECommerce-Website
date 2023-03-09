@@ -12,7 +12,7 @@
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "ckeditor4-react": "^2.0.1",
-    "firebase": "^8.9.1",
+    "firebase": "^9.8.3",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-country-region-selector": "^3.2.0",
@@ -30,7 +30,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts  start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
