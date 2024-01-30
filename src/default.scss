@@ -1,145 +1,148 @@
 html {
-    font-size: 10px;
-    scroll-behavior: smooth;
-  }
-  
-  html,
-  body {
-    padding: 0;
-    margin: 0;
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-color: white;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root,
+.App,
+.fullHeight {
+  height: 100%;
+  min-width: 354px;
+}
+
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+h1 {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto 2rem;
+  font-size: 3rem;
+  line-height: 3.2rem;
+  color: #000000;
+  text-align: left;
+  font-weight: 400;
+  text-transform: uppercase;
+  border-bottom: #d3d3d3;
+}
+
+h2 {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 1rem auto 2rem;
+  font-size: 2.5rem;
+  line-height: 2.7rem;
+  color: #000000;
+  text-align: left;
+  font-weight: 400;
+  text-transform: uppercase;
+  border-bottom: #d3d3d3;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a,
+a:hover {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.main {
+  width: 100%;
+  min-height: 90vh;
+  height: calc(100% - 10rem);
+  max-width: 1450px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.loading {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.349);
+}
+
+.controlPanel {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-height: 100%;
+  padding: 3rem 0 6rem 25rem;
+  border-bottom: 1px solid #d3d3d3;
+
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25rem;
     height: 100%;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  html,
-  body,
-  #root,
-  .App,
-  .fullHeight {
-    height: 100%;
-    min-width: 354px;
+    z-index: 1;
+    border-right: 1px solid #d3d3d3;
   }
 
+  .content {
+    padding: 0 10px;
+  }
+}
 
-  
-  *, ::before, ::after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    position: relative;
-  }
+.adminLayout {
+  height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
+}
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    line-height: 1;
+.dashboardLayout {
+  height: calc(100% - 6.5rem - 5.8rem);
+}
+
+@media only screen and (max-width: 980px) {
+  html {
+    font-size: 9px;
   }
-  
-  h1 {
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0 auto 2rem;
-    font-size: 3.0rem;
-    line-height: 3.2rem;
-    color: #000000;
-    text-align: left;
-    font-weight: 400;
-    text-transform: uppercase;
-    border-bottom: #d3d3d3;
-  }
-  
-  h2 {
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 1rem auto 2rem;
-    font-size: 2.5rem;
-    line-height: 2.7rem;
-    color: #000000;
-    text-align: left;
-    font-weight: 400;
-    text-transform: uppercase;
-    border-bottom: #d3d3d3;
-  }
-  
-  a {
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  a, a:hover {
-    -webkit-transition: all .4s ease-in-out;
-    -moz-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-  }
-  
   .main {
-    width: 100%;
-    min-height: 90vh;
-    height: calc(100% - 10rem);
-    max-width: 1450px;
-    padding: 0 30px;
     margin: 0 auto;
   }
 
-  .loading{
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 200;
-    background-color: rgba(0, 0, 0, 0.349);
-  }
-  
   .controlPanel {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    min-height: 100%;
-    padding: 3rem 0 6rem 25.0rem;
-    border-bottom: 1px solid #d3d3d3;
-  
+    padding: 0 10px;
+
     .sidebar {
-      position: absolute;
-      top: 0; left: 0;
-      width: 25.0rem;
-      height: 100%;
-      z-index: 1;
-      border-right: 1px solid #d3d3d3;
-    }
-  
-    .content {
-      padding: 0 10px;
+      position: relative;
+      width: 100%;
+      border: none;
+      margin-bottom: 2.5rem;
     }
   }
-  
-  .adminLayout {
-    height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
-  }
-  
-  .dashboardLayout {
-    height: calc(100% - 6.5rem - 5.8rem);
-  }
-  
-  @media only screen and (max-width: 980px) {
-    html {
-      font-size: 9px;
-    }
-    .main{
-      margin: 0 auto;
-    }
-  
-    .controlPanel {
-      padding: 0 10px;
-  
-      .sidebar {
-        position: relative;
-        width: 100%;
-        border: none;
-        margin-bottom: 2.5rem;
-      }
-    }
-  }
+}

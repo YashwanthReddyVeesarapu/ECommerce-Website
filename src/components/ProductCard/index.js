@@ -13,16 +13,15 @@ import {
 import Button from "./../forms/Button";
 import ImageSlider from "./../Slider/imageSlider";
 import "./styles.scss";
-import { Helmet } from "react-helmet";
 import {
   MenuItem,
   Select,
   FormControl,
   CircularProgress,
   InputLabel,
-} from "@material-ui/core";
+} from "@mui/material";
 import SimpleDialog from "../Dialog";
-import { HelpOutline } from "@material-ui/icons";
+import { HelpOutline } from "@mui/icons-material";
 
 import { sizeCharts } from "../../pages/Admin/Additionals";
 
@@ -107,7 +106,7 @@ const ProductCard = ({}) => {
   ) {
     return (
       <div className="productCard">
-        <Helmet>
+        {/* <Helmet>
           <title>Rediva | {productName}</title>
           <meta name="keyword" content={productName} />
 
@@ -125,7 +124,7 @@ const ProductCard = ({}) => {
           <meta property="product:price:currency" content="INR" />
           <meta property="product:retailer_item_id" content="Rediva#" />
           <meta property="product:item_group_id" content={brand} />
-        </Helmet>
+        </Helmet> */}
         <SimpleDialog
           open={sizeChartOpen}
           onClose={() => setSizeChartOpen(false)}
@@ -237,8 +236,7 @@ const ProductCard = ({}) => {
               />
               <FormControl style={{ minWidth: 80 }} variant="outlined">
                 <InputLabel style={{ fontSize: 13, padding: 10 }}>
-                  {" "}
-                  Size{" "}
+                  Size
                 </InputLabel>
                 <Select
                   style={{ fontSize: 10 }}
@@ -289,7 +287,7 @@ const ProductCard = ({}) => {
             </li>
           </ul> */}
           <div className="description">
-            <h3>Specs</h3>
+            <h3>Product Details</h3>
             <table border="1" cellPadding="1" style={{ width: "50%" }}>
               <tr>
                 <th>Model</th>

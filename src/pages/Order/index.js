@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getOrderDetailsStart } from './../../redux/Orders/orders.actions';
-import { useDispatch, useSelector } from 'react-redux';
-import OrderDetails from './../../components/OrderDetails';
-import { Helmet } from 'react-helmet';
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getOrderDetailsStart } from "./../../redux/Orders/orders.actions";
+import { useDispatch, useSelector } from "react-redux";
+import OrderDetails from "./../../components/OrderDetails";
 
 const mapState = ({ ordersData }) => ({
-  orderDetails: ordersData.orderDetails
+  orderDetails: ordersData.orderDetails,
 });
 
 const Order = () => {
@@ -15,42 +14,29 @@ const Order = () => {
   const { orderDetails } = useSelector(mapState);
   const { orderTotal, shippingAddress, paymentMethod } = orderDetails;
 
-
   console.log(paymentMethod);
 
-
   useEffect(() => {
-
-    dispatch(
-      getOrderDetailsStart(orderID)
-    );
-
+    dispatch(getOrderDetailsStart(orderID));
   }, []);
 
-  if (!shippingAddress || !orderTotal)
-    return null;
+  if (!shippingAddress || !orderTotal) return null;
 
   return (
     <div>
-
-      <Helmet>
-        <title>Rediva | Order:{orderID}</title>
-      </Helmet>
-
       <h3>
         Order ID:
         <h2>#{orderID}</h2>
       </h3>
 
       <OrderDetails order={orderDetails} />
-      <div style={{ paddingLeft: '5vw', fontSize: '2vh' }} >
+      <div style={{ paddingLeft: "5vw", fontSize: "2vh" }}>
         Payment Method
-        <ul style={{ textAlign: 'left' }} >
+        <ul style={{ textAlign: "left" }}>
           <li>{paymentMethod.type}</li>
         </ul>
-
         Shipping Address
-        <ul style={{ textAlign: 'left' }} >
+        <ul style={{ textAlign: "left" }}>
           <li>{shippingAddress.line1}</li>
           <li>{shippingAddress.line2}</li>
           <li>{shippingAddress.city}</li>
@@ -59,13 +45,9 @@ const Order = () => {
         </ul>
       </div>
 
-      <h3>
-        Total: &#x20b9;{orderTotal}
-      </h3>
-
+      <h3>Total: &#x20b9;{orderTotal}</h3>
     </div>
-  )
-
-}
+  );
+};
 
 export default Order;

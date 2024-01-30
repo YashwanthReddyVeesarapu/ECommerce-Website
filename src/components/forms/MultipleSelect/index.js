@@ -1,30 +1,32 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
+import {
+  Checkbox,
+  FormControl,
+  Input,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  Select,
+  useTheme,
+} from "@mui/material";
+import React from "react";
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    maxWidth: 300,
-  },
-  chips: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  chip: {
-    margin: 10,
-  },
-  noLabel: {
-    marginTop: theme.spacing(3),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   formControl: {
+//     margin: theme.spacing(1),
+//     minWidth: 120,
+//     maxWidth: 300,
+//   },
+//   chips: {
+//     display: "flex",
+//     flexWrap: "wrap",
+//   },
+//   chip: {
+//     margin: 10,
+//   },
+//   noLabel: {
+//     marginTop: theme.spacing(3),
+//   },
+// }));
 
 const ITEM_HEIGHT = 40;
 const ITEM_PADDING_TOP = 0;
@@ -37,17 +39,12 @@ const MenuProps = {
   },
 };
 
-
-
-export default function MultipleSelect({sizes, handleChange, personName}) {
-  const classes = useStyles();
+export default function MultipleSelect({ sizes, handleChange, personName }) {
   const theme = useTheme();
-
-
 
   return (
     <div>
-      <FormControl className={classes.formControl}>
+      <FormControl className="">
         <InputLabel id="demo-mutiple-checkbox-label">Size</InputLabel>
         <Select
           labelId="demo-mutiple-checkbox-label"
@@ -56,7 +53,7 @@ export default function MultipleSelect({sizes, handleChange, personName}) {
           value={personName}
           onChange={handleChange}
           input={<Input />}
-          renderValue={(selected) => selected.join(', ')}
+          renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
         >
           {sizes.map((size) => (

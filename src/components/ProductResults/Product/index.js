@@ -1,30 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { Skeleton } from '@material-ui/lab';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Skeleton } from "@mui/material";
 
-const useStyles = makeStyles((theme) => ({
-  thumb: {
-    display: 'flex',
-    height: '200px',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  img: {
-    overflow: 'hidden',
-    margin: 'auto',
-    display: 'block',
-    height: '200px',
-    width: '100%',
-    maxHeight: '220px',
-    objectFit: 'cover',
-  }
-}));
+import "../styles.scss";
 
 const Product = (product) => {
-  const classes = useStyles();
   const [imgsLoaded, setImgsLoaded] = useState(false);
   const [timeout, setTimer] = useState(false);
   const {
@@ -33,41 +14,42 @@ const Product = (product) => {
     productName,
     productPrice,
     productSize,
-    discountedPrice
+    discountedPrice,
   } = product;
 
-
-
   useEffect(() => {
-    const loadImage = productThumbnail => {
+    const loadImage = (productThumbnail) => {
       return new Promise((resolve, reject) => {
-        const loadImg = new Image()
-        loadImg.src = productThumbnail
+        const loadImg = new Image();
+        loadImg.src = productThumbnail;
 
         loadImg.onload = () =>
           setTimeout(() => {
-            resolve(productThumbnail)
-          })
+            resolve(productThumbnail);
+          });
 
-        loadImg.onerror = err => reject(err)
-      })
-    }
-    (loadImage(productThumbnail))
+        loadImg.onerror = (err) => reject(err);
+      });
+    };
+    loadImage(productThumbnail)
       .then(() => setImgsLoaded(true))
-      .catch(err => console.log("err", err))
-  }, [])
+      .catch((err) => console.log("err", err));
+  }, []);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  if (!documentID || !productThumbnail || !productName || !productSize ||
-    typeof productPrice === 'undefined') return null;
-
-
+  if (
+    !documentID ||
+    !productThumbnail ||
+    !productName ||
+    !productSize ||
+    typeof productPrice === "undefined"
+  )
+    return null;
 
   const configAddToCartBtn = {
-    type: 'button'
-
+    type: "button",
   };
 
   // const handleAddToCart = (product) => {
@@ -78,29 +60,28 @@ const Product = (product) => {
   //   history.push('/cart');
   // };
 
-
   function redirect() {
-    sessionStorage.setItem('scrool', window.scrollY)
-    history.push(`/product/${documentID}`)
-
+    sessionStorage.setItem("scrool", window.scrollY);
+    history.push(`/product/${documentID}`);
   }
 
-
   setTimeout(() => {
-    setTimer(true)
+    setTimer(true);
   }, 100);
 
-
   return (
-
-    <div className={timeout ? "product-next" : "product"} onClick={redirect} >
-      <div className={classes.thumb}>
+    <div className={timeout ? "product-next" : "product"} onClick={redirect}>
+      <div className={"thumb"}>
         {imgsLoaded ? (
-          <img className={classes.img} src={productThumbnail} alt={productName} onLoad={() => setImgsLoaded(true)} />
-
+          <img
+            className={"img"}
+            src={productThumbnail}
+            alt={productName}
+            onLoad={() => setImgsLoaded(true)}
+          />
         ) : (
           // <Skeleton variant="rect" width="100%" height={250} />
-          <Skeleton className={classes.thumb} variant="rect" />
+          <Skeleton className={"thumb"} variant="rect" />
         )}
       </div>
 
@@ -108,27 +89,33 @@ const Product = (product) => {
         <ul>
           <li>
             {imgsLoaded ? (
-              <span className="name">
-                {productName}
-
-              </span>)
-              : <Skeleton style={{ marginLeft: '25%', marginRight: '25%' }} height="30px" variant="text" />}
+              <span className="name">{productName}</span>
+            ) : (
+              <Skeleton
+                style={{ marginLeft: "25%", marginRight: "25%" }}
+                height="30px"
+                variant="text"
+              />
+            )}
           </li>
           {imgsLoaded ? (
             <li>
-
-              {discountedPrice === 0 ?
-                <span className="price">
-                  &#x20b9;{productPrice}
-                </span> :
+              {discountedPrice === 0 ? (
+                <span className="price">&#x20b9;{productPrice}</span>
+              ) : (
                 <span className="price">
                   &#x20b9;{discountedPrice}&nbsp;
                   <s>&#x20b9;{productPrice} </s>
-                </span>}
-
-            </li>) :
-            <Skeleton style={{ marginLeft: '30%', marginRight: '30%' }} height="20px" variant="text" />
-          }
+                </span>
+              )}
+            </li>
+          ) : (
+            <Skeleton
+              style={{ marginLeft: "30%", marginRight: "30%" }}
+              height="20px"
+              variant="text"
+            />
+          )}
           {/* {imgsLoaded ? (
             <li>
               <div className="addToCart">
@@ -141,10 +128,8 @@ const Product = (product) => {
             <Skeleton style={{ borderRadius: 30, marginTop: 15 }} height='30px' variant="rect" />} */}
         </ul>
       </div>
-
     </div>
   );
 };
-
 
 export default Product;

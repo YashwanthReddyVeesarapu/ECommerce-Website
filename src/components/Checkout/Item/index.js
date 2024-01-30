@@ -6,9 +6,8 @@ import {
   reduceCartItem,
   handleSize,
 } from "./../../../redux/Cart/cart.actions";
-import { Select, MenuItem, InputLabel } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { Skeleton } from "@material-ui/lab";
+import { Select, MenuItem, InputLabel, Skeleton } from "@mui/material";
 
 const Item = (product) => {
   const dispatch = useDispatch();
